@@ -6,6 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "CollidingPawn.generated.h"
 
+class UCollidingPawnMovementComponent;
 UCLASS()
 class QUICKSTART_API ACollidingPawn : public APawn
 {
@@ -27,4 +28,12 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UCollidingPawnMovementComponent* OurMovementComponent;
+
+	virtual UPawnMovementComponent* GetMovementComponent() const override;
+
+	void MoveForward(float AxisValue);
+	void MoveRight(float AxisValue);
+	void Turn(float AxisValue);
+	void ParticleToggle();
 };
